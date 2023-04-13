@@ -1,6 +1,11 @@
 close all;
 
 %need to find a good way to import all the images
-
-img = imread(all the images);
-g = im2gray(img);
+n = 55;
+A = ones(size of each image columned, n)
+for i = i:n
+    img = imread(i);
+    img = im2gray(img);
+    imgCol = img(:);
+    A = [A imgcol]
+    
