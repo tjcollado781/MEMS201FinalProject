@@ -1,2 +1,6 @@
-clc;
 close all;
+
+%need to find a good way to import all the images
+
+img = imread(all the images);
+g = im2gray(img);
