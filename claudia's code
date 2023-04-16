@@ -1,0 +1,18 @@
+close all
+% ALL IMAGES ARE INITIALLY [1201x901 uint8]
+imgs = imageDatastore('C:\Users\csmar\OneDrive\Documents\SP23\Numerical Methods\Final Project\Photos\Resting\*.jpg'); % load folder
+
+RGB = imread('Final Project\Photos\Resting\1.jpg'); % get the file
+% imshow(RGB); % shows the image in color
+
+I = rgb2gray(RGB); % should use im2gray?
+% imshow(I) % shows the image in black & white
+
+imgCol = I(:);
+
+A = [I]; % concatenate into a matrix
+
+meanVec = mean(A,2); % column vector - takes all the rows and averages them for each column
+
+atilda = A - meanVec % this doesn't work 
+
