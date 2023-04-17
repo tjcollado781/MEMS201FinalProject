@@ -1,4 +1,6 @@
 close all;
+% Max Cusick, Tomas Collado, Claudia Markel, Natalia Klim
+
 % I found the method for reading in images here, lets be sure to cite it in the report: https://www.mathworks.com/matlabcentral/answers/396955-read-all-images-in-directory
 images = dir('data1Cropped\*.jpg');     % this reads in everything from the data1Cropped image folder as long as that folder is in your working directory.    
 
