@@ -1,8 +1,10 @@
-close all, clear;
+close all;
+clear; 
+clc; 
 % Max Cusick, Tomas Collado, Claudia Markel, Natalia Klim
 
 % I found the method for reading in images here, lets be sure to cite it in the report: https://www.mathworks.com/matlabcentral/answers/396955-read-all-images-in-directory
-% read in all images
+% Read in all images
 images = dir('data1Cropped\*.jpg');         
 
 %Initial values 
@@ -36,4 +38,8 @@ IMeigen = U(:, [1:numBasis])*S(1:numBasis, 1:numBasis)*V(:, [1:numBasis])';
 IM = IMeigen + m; 
 IM_2D = reshape(IM, 1201, 901, []);
 
-imshow(IM_2D (:, :, 3)/255)
+%Maybe make this a for loop to show all images (?)
+figure
+imshow(IM_2D (:, :, 5)/255)
+
+

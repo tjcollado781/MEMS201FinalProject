@@ -1,4 +1,4 @@
-close all, clear;
+clear, close all;
 % Max Cusick, Tomas Collado, Claudia Markel, Natalia Klim
 
 % I found the method for reading in images here, lets be sure to cite it in the report: https://www.mathworks.com/matlabcentral/answers/396955-read-all-images-in-directory
@@ -36,4 +36,7 @@ IMeigen = U(:, [1:numBasis])*S(1:numBasis, 1:numBasis)*V(:, [1:numBasis])';
 IM = IMeigen + m; 
 IM_2D = reshape(IM, 1201, 901, []);
 
+for i 
 imshow(IM_2D (:, :, 3)/255)
+
+
