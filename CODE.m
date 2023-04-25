@@ -1,29 +1,39 @@
-close all;
+close all, clear;
 % Max Cusick, Tomas Collado, Claudia Markel, Natalia Klim
 
 % I found the method for reading in images here, lets be sure to cite it in the report: https://www.mathworks.com/matlabcentral/answers/396955-read-all-images-in-directory
-images = dir('data1Cropped\*.jpg');     % this reads in everything from the data1Cropped image folder as long as that folder is in your working directory.    
+% read in all images
+images = dir('data1Cropped\*.jpg');         
 
-%set initial values based off of the images
-n = length(images);    % Number of files found
-p = 1201*901;    % get number of pixels per image
-A = ones(p, n);     % matrix the size of each image as a column by the number of images
+%Initial values 
+n = length(images);            % Number of files found
+p = 1201*901;                  % Number of pixels per image
+A = ones(p, n);                % Initial matrix the size of each image as a column by the number of images
+numBasis = 10; 
 
-%this is a loop to read in all of the images and put them in A
+%Loop to read in all images to matrix A
 for i = 1:n
-    current_image = images(i).name;     % get the name of the current image
-    current_image = imread(['data1Cropped\' current_image]);    % retrieve the current image from the actual folder
-    img = im2gray(current_image);   % convert each image to grayscale
-    imgCol = img(:);    % turn each grayscale image into a column
-    A(:,i) = imgCol;    % throw all the images together into A
+    current_image = images(i).name;                             % Get name current image
+    current_image = imread(['data1Cropped\' current_image]);    % Retrieve the current image from folder
+    img = im2gray(current_image);                               % Convert image to grayscale
+    imgCol = img(:);                                            % Convert image to column vector
+    A(:,i) = imgCol;                                            % Put image column into matrix A
 end
 
-m = mean(A,2);        %take the mean of A
+%Find mean of A
+m = mean(A,2);       
 
-%the svd line
+%Calculate eigenvectors and eigenvalues
 [U,S,V] = svd(A - m,'econ');
 
+%Create plot of singular values
+figure
+plot(diag(S));
 
 
+%Reconstruct original images
+IMeigen = U(:, [1:numBasis])*S(1:numBasis, 1:numBasis)*V(:, [1:numBasis])';
+IM = IMeigen + m; 
+IM_2D = reshape(IM, 1201, 901, []);
 
-
+imshow(IM_2D (:, :, 3)/255)
