@@ -18,15 +18,12 @@ for i = 1:n
     A(:,i) = imgCol;    % throw all the images together into A
 end
 
-m = mean(A,2); %take the mean of A
-
-% I couldn't figure out how to do the subtracting the mean in just one line, but this for loop works. We may want to make it more efficient later though
-for j = 1:n
-    A_modified(:,j) = A(:,j) - m(:); %modify A by subtracting the mean from each column
-end
+m = mean(A,2);        %take the mean of A
 
 %the svd line
-[U,S,V] = svd(A_modified,'econ');
+[U,S,V] = svd(A - m,'econ');
+
+
 
 
 
