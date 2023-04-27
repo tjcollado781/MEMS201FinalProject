@@ -11,7 +11,7 @@ images = dir('data1Cropped\*.jpg');
 n = length(images);            % Number of files found
 p = 1201*901;                  % Number of pixels per image
 A = ones(p, n);                % Initial matrix the size of each image as a column by the number of images
-numBasis = 10;                 % Number of basis used to reconstruct images
+numBasis = 12;                 % Number of basis used to reconstruct images
 
 %Loop to read in all images to matrix A
 for i = 1:n
@@ -40,6 +40,6 @@ IM_2D = reshape(IM, 1201, 901, []);                                         % re
 
 %Maybe make this a for loop to show all images (?)
 figure
-imshow(IM_2D (:, :, 5)/255)
+implay(IM_2D/255) %, :, 11)/255)
 
 
