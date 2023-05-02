@@ -11,7 +11,7 @@ imagesR = dir('dataResting\*.jpg');
 n = length(imagesR);           % Number of files found
 p = 1201*901;                  % Number of pixels per image
 A = ones(p, n);                % Initial matrix the size of each image as a column by the number of images
-numBasis = 12;                 % Number of basis used to reconstruct images
+numBasis = 8;                 % Number of basis used to reconstruct images
 
 %Loop to read in all images to matrix A
 for i = 1:n
@@ -33,6 +33,8 @@ figure
 plot(diag(S));
 hold on; 
 title('Singular values of Straight Eigenfaces');
+xlabel('Index of Singular Value');
+ylabel('Singular Value');
 grid on; 
 hold off;
 
@@ -55,7 +57,7 @@ imagesS = dir('dataSmiling\*.jpg');
 n = length(imagesS);           % Number of files found
 p = 1201*901;                  % Number of pixels per image
 A = ones(p, n);                % Initial matrix the size of each image as a column by the number of images
-numBasis = 12;                 % Number of basis used to reconstruct images
+numBasis = 8;                 % Number of basis used to reconstruct images
 
 %Loop to read in all images to matrix A
 for i = 1:n
@@ -72,11 +74,21 @@ mS = mean(A,2);
 %Calculate eigenvectors and eigenvalues
 [U,S,V] = svd(A - mS,'econ');
 
+%Plot V value for first Eigenface
+figure
+plot(V(1,:));
+hold on;
+title('V values of First Reconstructed Smiling Eigenface');
+grid on; 
+hold off; 
+
 %Create plot of singular values
 figure
 plot(diag(S));
 hold on; 
 title('Singular values of Smiling Eigenfaces');
+xlabel('Index of Singular Value');
+ylabel('Singular Value');
 grid on; 
 hold off;
 
@@ -92,10 +104,6 @@ implay(IM_2D/255)
 
 
 
-
-
-
-
 % Read in all Frowning images
 imagesF = dir('dataFrowning\*.jpg'); 
 
@@ -103,7 +111,7 @@ imagesF = dir('dataFrowning\*.jpg');
 n = length(imagesF);           % Number of files found
 p = 1201*901;                  % Number of pixels per image
 A = ones(p, n);                % Initial matrix the size of each image as a column by the number of images
-numBasis = 12;                 % Number of basis used to reconstruct images
+numBasis = 8;                 % Number of basis used to reconstruct images
 
 %Loop to read in all images to matrix A
 for i = 1:n
@@ -120,11 +128,21 @@ mF = mean(A,2);
 %Calculate eigenvectors and eigenvalues
 [U,S,V] = svd(A - mF,'econ');
 
+%Plot V value for first Eigenface
+figure
+plot(V(1,:));
+hold on;
+title('V values of First Reconstructed Frowning Eigenface');
+grid on; 
+hold off; 
+
 %Create plot of singular values
 figure
 plot(diag(S));
 hold on; 
 title('Singular values of Frowning Eigenfaces');
+xlabel('Index of Singular Value');
+ylabel('Singular Value');
 grid on; 
 hold off;
 
