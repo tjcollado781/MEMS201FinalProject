@@ -41,6 +41,9 @@ hold off;
 plot(V(1,1:20))
 grid on
 title('V values for first reconstructed eigenface')
+grid on
+xlabel('Principal Component')
+ylabel('Corresponding V-Value')
 
 %Reconstruct original images
 IMeigen = U(:, [1:numBasis])*S(1:numBasis, 1:numBasis)*V(:, [1:numBasis])';  % apply the selected basis to the images
@@ -55,7 +58,7 @@ implay(IM_2D/255)
 %Resting images
 
 % Read in all images
-imagesR = dir('dataResting\*.jpg');         
+imagesR = dir('dataResting\*.jpg');   % folder of all resting face images      
 
 %Initial values 
 n = length(imagesR);           % Number of files found
@@ -101,7 +104,7 @@ implay(IM_2D/255)
 % Smiling images
 
 % Read in all Smiling images
-imagesS = dir('dataSmiling\*.jpg'); 
+imagesS = dir('dataSmiling\*.jpg'); % folder of all smiling images
 
 %Initial values 
 n = length(imagesS);           % Number of files found
@@ -130,6 +133,8 @@ plot(V(1,:));
 hold on;
 title('V values of First Reconstructed Smiling Eigenface');
 grid on; 
+xlabel('Principal Component')
+ylabel('Corresponding V-Value')
 hold off; 
 
 %Create plot of singular values
@@ -155,7 +160,7 @@ implay(IM_2D/255)
 % Frowning images
 
 % Read in all Frowning images
-imagesF = dir('dataFrowning\*.jpg'); 
+imagesF = dir('dataFrowning\*.jpg'); % folder of all frowning images
 
 %Initial values 
 n = length(imagesF);           % Number of files found
@@ -183,6 +188,8 @@ figure
 plot(V(1,:));
 hold on;
 title('V values of First Reconstructed Frowning Eigenface');
+xlabel('Principal Component')
+ylabel('Corresponding V-Value')
 grid on; 
 hold off; 
 
