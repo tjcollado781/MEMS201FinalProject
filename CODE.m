@@ -31,13 +31,15 @@ mR = mean(A,2);
 [U,S,V] = svd(A - mR,'econ');
 
 %Create plot of singular values
+figure;
 plot(diag(S));
-hold on; 
 title('Singular values of All Eigenfaces');
+xlabel('Index of Singular Value');
+ylabel('Singular Value');
 grid on; 
-hold off;
 
 %plot V for first image
+figure;
 plot(V(1,1:20))
 grid on
 title('V values for first reconstructed eigenface')
